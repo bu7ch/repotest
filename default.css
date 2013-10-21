@@ -1,28 +1,46 @@
+@charset "UTF-8";
+ 
 @font-face {
-  font-family: 'generalFoundicons';
-  src: url('fonts/general_foundicons.eot');
-  src: url('fonts/general_foundicons.eot?#iefix') format('embedded-opentype'),
-       url('fonts/general_foundicons.woff') format('woff'),
-       url('fonts/general_foundicons.ttf') format('truetype'),
-       url('fonts/general_foundicons.svg#generalFoundicons') format('svg');
+  font-family: "untitled-font-1";
+  src:url("fonts/untitled-font-1.eot");
+  src:url("fonts/untitled-font-1.eot?#iefix") format("embedded-opentype"),
+    url("fonts/untitled-font-1.ttf") format("truetype"),
+    url("fonts/untitled-font-1.svg#untitled-font-1") format("svg"),
+    url("fonts/untitled-font-1.woff") format("woff");
   font-weight: normal;
   font-style: normal;
-}
-
-[class*="foundicon-"] {
-  display: inline;
-  width: auto;
-  height: auto;
-  line-height: inherit;
-  vertical-align: baseline;
-  background-image: none;
-  background-position: 0 0;
-  background-repeat: repeat;
 }
  
-[class*="foundicon-"]:before {
-  font-family: "generalFoundicons";
-  font-weight: normal;
-  font-style: normal;
-  text-decoration: inherit;
+[data-icon]:before {
+  font-family: "untitled-font-1" !important;
+  content: attr(data-icon);
+  font-style: normal !important;
+  font-weight: normal !important;
+  font-variant: normal !important;
+  text-transform: none !important;
+  speak: none;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+ 
+[class^="icon-"]:before,
+[class*=" icon-"]:before {
+  font-family: "untitled-font-1" !important;
+  font-style: normal !important;
+  font-weight: normal !important;
+  font-variant: normal !important;
+  text-transform: none !important;
+  speak: none;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+} 
+ 
+.icon-trash:before {
+   content: "t"; 
+} 
+ 
+.icon-edit:before {
+   content: "e"; 
 }
