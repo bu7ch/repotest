@@ -1,0 +1,5 @@
+acheter du shit
+ajouter une nouvelle tache, requête POST
+supprimer une tache, requête DELETE
+éditer une tache, requête PUT
+barrer le texte des taches cochées

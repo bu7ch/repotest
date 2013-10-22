@@ -44,3 +44,11 @@
 .icon-edit:before {
    content: "e"; 
 }
+nav.top-bar {
+  margin-bottom: 20px;
+}
+
+h2 {
+padding-left: 15px;
+color: white;
+}
