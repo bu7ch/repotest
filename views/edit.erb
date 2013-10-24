@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel='stylesheet' href='http://cdn.jsdelivr.net/foundation/4.3.2/css/foundation.min.css'>
+<link rel='stylesheet' href='default.css'>
+</head>
+<body>
+
+<nav class="top-bar">
+  <ul class="title-area">
+    <!-- Title Area -->
+    <li class="name">
+		<h2>TOUT DOUX</h2> 	 
+    </li>
+    <!-- Remove the class "menu-icon" to get rid of menu icon. Take out "Menu" to just have icon alone -->
+    <li class="toggle-topbar menu-icon"><a href="#">pseudo</a></li>
+  </ul>
+</nav>
+	<div class="row">
+		<div class="large-8  large-centered columns">
+			<form method="post" action="/edit/<%= @task.id %>">
+				<input type="hidden" name="_method" value="put" />
+				<input type="text" name="fock" value="<%= @task.content %>">
+			</form>
+		</div>
+	</div>
+</body>
+</html>
