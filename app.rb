@@ -1,7 +1,6 @@
 require "sinatra"
 require "sinatra/activerecord"
 
-
 set :database, "sqlite3:///foo.sqlite3"
 
 ## MODEL
@@ -72,17 +71,13 @@ get "/delete/:id" do
 end
 
 get "/check/:id" do
-	# Display Task.content in a form field
+	# Add the current date to 
 	Task.find(params[:id]).update_attributes date_done: Time.now
 	redirect "/"
 end
 
 get "/uncheck/:id" do
-	# Display Task.content in a form field
-	Task.find(params[:id]).update_attributes date_done:  nil
+	# 
+	Task.find(params[:id]).update_attributes date_done: nil
 	redirect "/"
 end
-
-
-# Todo :
-# => 

@@ -24,8 +24,8 @@
 			</div>
 		</div>
 		
-		<div class="row">
-			<% @tasks.each do |task| %>
+		<% @tasks.each do |task| %>
+		<div class="row task">
 			<div class="large-8 large-centered columns">
 				<div class="small-7  columns">
 					<a href="/<%="un" if !task.open? %>check/<%= task.id %>"><i class="icon-<%="un" if task.open? %>checked"></i></a>
@@ -36,8 +36,8 @@
 					<a href="/edit/<%= task.id %>"><i class="icon-edit"></i></a>
 				</div>	
 			</div>
-			<% end %>
 		</div>
+		<% end %>
 
 </body>
 </html>
