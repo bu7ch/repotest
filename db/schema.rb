@@ -14,6 +14,7 @@ ActiveRecord::Schema.define(version: 20131024152659) do
 
   create_table "tasks", force: true do |t|
     t.string "content"
+    t.date   "date_done"
   end
 
 end

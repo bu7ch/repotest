@@ -1,16 +1,28 @@
 require "sinatra"
 require "sinatra/activerecord"
 
+
 set :database, "sqlite3:///foo.sqlite3"
 
-############################################## MODEL
+## MODEL
 
 # Define our Task model
 class Task < ActiveRecord::Base
 	validates_presence_of :content
+	def open?
+		self.date_done.nil?
+	end
+
+	def today?
+		self.date_done.today?
+	end
+
+	def archived?
+		!open? && !today?
+	end
 end
 
-########################################## CONTROLER
+## CONTROLER
 
 not_found do
 	# Handle 404 errors
@@ -19,14 +31,25 @@ end
 
 get "/" do
 	# Display all Tasks
-	@tasks = Task.all
+	@tasks = []
+	Task.all.each do |task|
+		@tasks << task if !task.archived?
+	end
+	erb :index
+end
+
+get "/done" do
+	# Display all Tasks
+	@tasks = []
+	Task.all.each do |task|
+		@tasks << task if task.archived?
+	end
 	erb :index
 end
 
 post "/new" do
-	# Creat a new Task
-	@task = Task.new content: params[:fock]
-	@task.save
+	# Create a new Task
+	Task.create content: params[:fock]
 	redirect "/"
 end
 
@@ -38,18 +61,28 @@ end
 
 put "/edit/:id" do
 	# Update Task.content
-	@task = Task.find params[:id]
-	@task.update_attributes content: params[:fock]
+	@task = Task.find(params[:id]).update_attributes content: params[:fock]
 	redirect "/"
 end
 
-delete "/delete/:id" do
+get "/delete/:id" do
 	# Delete the Task entry
-
-	# Task.delete or Task.destroy ???
-	# http://www.nickpeters.net/2007/12/21/delete-vs-destroy/
+	Task.destroy params[:id]
+	redirect "/"
 end
 
+get "/check/:id" do
+	# Display Task.content in a form field
+	Task.find(params[:id]).update_attributes date_done: Time.now
+	redirect "/"
+end
+
+get "/uncheck/:id" do
+	# Display Task.content in a form field
+	Task.find(params[:id]).update_attributes date_done:  nil
+	redirect "/"
+end
+
+
 # Todo :
-# => Quand je clique sur le bouton 'trash', supprimer la tache
 # => 

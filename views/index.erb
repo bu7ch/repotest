@@ -28,11 +28,11 @@
 			<% @tasks.each do |task| %>
 			<div class="large-8 large-centered columns">
 				<div class="small-7  columns">
-					<input type="checkbox" id="checkbox1"/>
-					<%= task.content %>
+					<a href="/<%="un" if !task.open? %>check/<%= task.id %>"><i class="icon-<%="un" if task.open? %>checked"></i></a>
+				<%= task.content %>
 				</div>
 				<div class="small-2 columns">
-					<a href="/delete/<%= task.id %>"><i class="icon-trash"></i></a>
+					<a href="/delete/<%= task.id %>"><i class="icon-trash"></i></a> 
 					<a href="/edit/<%= task.id %>"><i class="icon-edit"></i></a>
 				</div>	
 			</div>
