@@ -1,0 +1,11 @@
+README
+
+#Require
+ 	Sinatra
+ 	ActiveRecord
+ 	SQLite
+
+#To do before running
+ 	In your terminal,
+ 	Go to root
+ 	type: "rake db:migrate"
